@@ -10,9 +10,10 @@
 从日志看，8皇后未找到任何解，请分析原因并修复。
 
 **AI**：错误表明回溯过程中所有放置尝试都被拒绝，说明冲突检测逻辑可能过于严格。检查代码发现 `_is_safe` 仅判断了列冲突，遗漏了对角线检查。已修改为同时检查两个对角线方向：
-```python
-def _is_safe(self, queens: List[int], row: int, col: int) -> bool:
-   for r, c in enumerate(queens):
-        if c == col or abs(r - row) == abs(c - col):
-            return False
-    return True
+
+## 3. 引导代码重构
+**重构 Prompt**:
+"这段代码可以重构得更清晰吗？比如增加类型提示、优化变量名，或者添加更多注释。"
+
+**AI 回复**:
+优化了变量名，增加了详细的函数注释和类型提示，使代码更易维护。
