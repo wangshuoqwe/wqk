@@ -15,8 +15,7 @@ def _is_safe(self, queens: List[int], row: int, col: int) -> bool:
     for r, c in enumerate(queens):
         if c == col or abs(r - row) == abs(c - col):
             return False
-    return True。
-
+    return True；
 
 
 
