@@ -15,7 +15,7 @@ def _is_safe(self, queens: List[int], row: int, col: int) -> bool:
         if c == col or abs(r - row) == abs(c - col):
             return False
     return True
-
+---
 ## 阶段三： 引导AI进行代码重构
 **重构 Prompt**:
 "这段代码可以重构得更清晰吗？比如增加类型提示、优化变量名，或者添加更多注释。"
