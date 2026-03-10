@@ -1,33 +1,53 @@
+# tests/test_eight_queens.py
 import pytest
-from src.queens_solver import NQueensSolver
+from src.eight_queens import solve_n_queens
 
-def test_4_queens_count():
-    """测试4皇后问题的解的数量（应为2个）"""
-    solver = NQueensSolver(4)
-    solutions = solver.solve()
-    assert len(solutions) == 2
+def is_valid_solution(board, n):
+    """验证一个解是否合法"""
+    # 检查是否有重复的列（行是自动保证不重复的，因为每个位置代表一行）
+    if len(set(board)) != n:
+        return False
+    # 检查对角线
+    for i in range(n):
+        for j in range(i + 1, n):
+            if abs(board[i] - board[j]) == abs(i - j):
+                return False
+    return True
 
-def test_8_queens_count():
-    """测试8皇后问题的解的数量（应为92个）"""
-    solver = NQueensSolver(8)
-    solutions = solver.solve()
-    assert len(solutions) == 92
+def test_n4_solution_count():
+    """测试N=4时解的数量是否为2"""
+    solutions = solve_n_queens(4)
+    assert len(solutions) == 2, f"N=4应该有2个解，但得到了{len(solutions)}个"
 
-def test_solution_validity():
-    """验证每个解是否真的有效（无冲突）"""
-    solver = NQueensSolver(5)
-    solutions = solver.solve()
+def test_n8_solution_count():
+    """测试N=8时解的数量是否为92"""
+    solutions = solve_n_queens(8)
+    assert len(solutions) == 92, f"N=8应该有92个解，但得到了{len(solutions)}个"
+
+def test_n4_solutions_valid():
+    """测试N=4的所有解是否合法"""
+    solutions = solve_n_queens(4)
     for sol in solutions:
-        # 检查冲突
-        for i in range(len(sol)):
-            for j in range(i + 1, len(sol)):
-                assert sol[i] != sol[j]  # 不同列
-                assert abs(i - j) != abs(sol[i] - sol[j])  # 不在对角线上
+        assert is_valid_solution(sol, 4), f"非法解: {sol}"
 
-def test_edge_cases():
-    """边界情况：1皇后和2皇后"""
-    solver1 = NQueensSolver(1)
-    assert len(solver1.solve()) == 1  # 只有1个解
+def test_n8_solutions_valid():
+    """测试N=8的所有解是否合法"""
+    solutions = solve_n_queens(8)
+    for sol in solutions:
+        assert is_valid_solution(sol, 8), f"非法解: {sol}"
 
-    solver2 = NQueensSolver(2)
-    assert len(solver2.solve()) == 0  # 无解
+def test_n1_boundary():
+    """测试边界情况N=1，应有1个解"""
+    solutions = solve_n_queens(1)
+    assert len(solutions) == 1
+    assert is_valid_solution(solutions[0], 1)
+
+def test_n2_boundary():
+    """测试边界情况N=2，应有0个解"""
+    solutions = solve_n_queens(2)
+    assert len(solutions) == 0
+
+def test_n3_boundary():
+    """测试边界情况N=3，应有0个解"""
+    solutions = solve_n_queens(3)
+    assert len(solutions) == 0
