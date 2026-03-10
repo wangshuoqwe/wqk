@@ -1,4 +1,6 @@
- """
+def solve_n_queens(n: int) -> list[list[str]]:
+
+"""
 八皇后问题求解器（回溯法）
 支持求解任意 N 皇后的所有有效布局。
 """
