@@ -9,7 +9,12 @@
 **用户**：运行 `pytest tests/ -v` 后得到以下错误日志：
 从日志看，8皇后未找到任何解，请分析原因并修复。
 
-**AI**：错误表明回溯过程中所有放置尝试都被拒绝，说明冲突检测逻辑可能过于严格。检查代码发现 `_is_safe` 仅判断了列冲突，遗漏了对角线检查。已修改为同时检查两个对角线方向：
+**AI**：错误表明回溯过程中所有放置尝试都被拒绝，说明冲突检测逻辑可能过于严格。检查代码发现 `_is_safe` 仅判断了列冲突，遗漏了对角线检查。已修改为同时检查两个对角线方向：```python
+def _is_safe(self, queens: List[int], row: int, col: int) -> bool:
+    for r, c in enumerate(queens):
+        if c == col or abs(r - row) == abs(c - col):
+            return False
+    return True
 
 ## 3. 引导代码重构
 **重构 Prompt**:
