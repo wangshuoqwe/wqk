@@ -7,17 +7,16 @@
 ## 任务一：大模型生成文稿
 - 脚本：`task1_generate_article/generate_article.py`
 - 生成的文章见 `generated_article.txt`（≥200字）
-- 截图：`screenshot_task1.png`
 
 ## 任务二：文本转音频（TTS）
 - 脚本：`task2_tts/text_to_speech.py`（使用 edge-tts）
 - 输出音频：`output_speech.mp3`
-- 截图：`screenshot_task2.png`
+
 
 ## 任务三：Whisper 语音识别
 - 脚本：`task3_whisper/transcribe_audio.py`
 - 识别文本：`transcribed_text.txt`
-- 截图：`screenshot_task3.png`
+
 
 ## 如何运行
 ```bash
