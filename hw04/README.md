@@ -8,7 +8,7 @@
 
 ## 运行步骤
 1. 安装依赖：
-pip install -requirements.txt
+pip install -r requirements.txt
 
 2. 运行音频识别：
 python whisper_file.py
