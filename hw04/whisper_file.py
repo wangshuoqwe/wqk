@@ -2,27 +2,34 @@ import whisper
 import time
 import os
 
-# 加载模型
-model = whisper.load_model("base")
+def main():
+    print("===== 任务3.1：Whisper 音频文件识别 =====")
+    # 加载模型
+    print("正在加载 Whisper  base 模型...")
+    model = whisper.load_model("base")
 
-# 音频路径（你导出的配音必须叫这个名字）
-audio_path = "output.mp3"
+    # 音频路径
+    audio_path = "output.mp3"
 
-if not os.path.exists(audio_path):
-    print("请把剪映导出的音频改名为 output.mp3 并放在同一文件夹！")
-    exit()
+    if not os.path.exists(audio_path):
+        print("错误：请先在本地生成 output.mp3")
+        return
 
-# 开始识别
-start = time.time()
-result = model.transcribe(audio_path, language="zh")
-end = time.time()
+    # 开始识别
+    print("开始识别音频，请稍候...")
+    t1 = time.time()
+    result = model.transcribe(audio_path, language="zh")
+    t2 = time.time()
 
-print("=" * 50)
-print("识别结果：")
-print(result["text"])
-print("=" * 50)
-print(f"耗时：{end - start:.2f} 秒")
+    # 输出结果
+    print("\n===== 识别结果 =====")
+    print(result["text"])
+    print(f"\n识别耗时：{t2 - t1:.2f} 秒")
 
-# 保存结果
-with open("result.txt", "w", encoding="utf-8") as f:
-    f.write(result["text"])
+    # 保存到文件
+    with open("result.txt", "w", encoding="utf-8") as f:
+        f.write(result["text"])
+    print("结果已保存至 result.txt")
+
+if __name__ == "__main__":
+    main()
