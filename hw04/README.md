@@ -1,26 +1,14 @@
-# HW04 – 大模型文案、声音库与语音识别实践
+# 人工智能导论 HW04 作业
+任务1：大模型生成文本
+任务2：剪映声音克隆
+任务3：开源语音识别（Whisper + Vosk）
 
-## 环境要求
-- Python 3.8+
-- 安装依赖：`pip install openai edge-tts openai-whisper`
+## 运行步骤
+1. 安装依赖：
+pip install -r requirements.txt
 
-## 任务一：大模型生成文稿
-- 脚本：`task1_generate_article/generate_article.py`
-- 生成的文章见 `generated_article.txt`（≥200字）
+2. 运行音频识别：
+python whisper_file.py
 
-## 任务二：文本转音频（TTS）
-- 脚本：`task2_tts/text_to_speech.py`（使用 edge-tts）
-- 输出音频：`output_speech.mp3`
-
-
-## 任务三：Whisper 语音识别
-- 脚本：`task3_whisper/transcribe_audio.py`
-- 识别文本：`transcribed_text.txt`
-
-
-## 如何运行
-```bash
-cd hw04
-python task1_generate_article/generate_article.py
-python task2_tts/text_to_speech.py
-python task3_whisper/transcribe_audio.py
+3. 运行实时麦克风识别：
+python vosk_realtime.py
