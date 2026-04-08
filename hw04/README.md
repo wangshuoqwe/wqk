@@ -8,10 +8,13 @@
 
 ## 运行步骤
 1. 安装依赖：
-pip install -r requirements.txt
+pip install -requirements.txt
 
 2. 运行音频识别：
 python whisper_file.py
 
 3. 运行实时麦克风识别：
 python vosk_realtime.py
+
+## 环境要求
+- Python 3.8+
