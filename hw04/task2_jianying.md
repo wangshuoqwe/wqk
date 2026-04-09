@@ -8,3 +8,4 @@
 
 ## 说明
 由于 GitHub 对文件大小和类型限制，配音音频 output.mp3 仅在本地保存与验证，未上传至仓库。
+![1abd200ed20a5ae48ad172fdd138ccf0_720](https://github.com/user-attachments/assets/921f83da-2b51-40df-9e3a-6cfe361f7f7b)
