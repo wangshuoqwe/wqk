@@ -1,4 +1,4 @@
-# 手写数字识别实验：极简 CNN 与 LeNet-5 对比
+## 一.手写数字识别实验：极简 CNN 与 LeNet-5 对比
 
 本项目为《计算机视觉》课程实验，基于 PyTorch 框架在 MNIST 数据集上实现并对比两种卷积神经网络：
 - **极简 CNN**：一个简单的两层卷积 + 全连接网络（参考公众号文章）
@@ -11,7 +11,8 @@
 
 ---
 
-## 目录结构
+## 二. 目录结构
+
 mnist-cnn-lab/
 ├── README.md # 本文件
 ├── requirements.txt # 依赖包列表
@@ -24,11 +25,10 @@ mnist-cnn-lab/
 ├── lenet5_train.py # LeNet-5 训练脚本
 └── compare_models.py # 模型对比脚本
 
-## 环境配置
+##  三.环境配置
 
 ## 1. 创建虚拟环境（推荐）
-
-```bash
+bash
 conda create -n mnist-cnn python=3.9
 conda activate mnist-cnn
 
