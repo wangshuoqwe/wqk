@@ -1,1 +1,26 @@
+# 调试记录
 
+## 错误 1：ModuleNotFoundError: No module named 'torch'
+- **现象**：运行 `simple_cnn_train.py` 时提示 `ModuleNotFoundError: No module named 'torch'`  
+- **原因分析**：未安装 PyTorch 或未激活正确的 Python 环境  
+- **修改点**：执行 `pip install torch torchvision`，并确保运行脚本时已激活 `mnist-cnn` 虚拟环境
+
+## 错误 2：HTTP Error 403: Forbidden (下载 MNIST 时)
+- **现象**：控制台显示 `urllib.error.HTTPError: HTTP Error 403: Forbidden`  
+- **原因分析**：网络限制，无法访问 MNIST 官方下载链接  
+- **修改点**：手动下载数据放入 `data/MNIST/raw/`，并将脚本中的 `download=True` 改为 `download=False`
+
+## 错误 3：CUDA out of memory
+- **现象**：训练时出现 `RuntimeError: CUDA out of memory`  
+- **原因分析**：GPU 显存不足（批量大小 64 可能过大）  
+- **修改点**：将 `BATCH_SIZE` 从 64 改为 32，或强制使用 CPU：`DEVICE = torch.device("cpu")`
+
+## 错误 4：FileNotFoundError: ./models/simple_cnn.pth
+- **现象**：训练完成保存模型时报 `FileNotFoundError: [Errno 2] No such file or directory: './models/simple_cnn.pth'`  
+- **原因分析**：未提前创建 `models/` 文件夹  
+- **修改点**：执行 `mkdir models` 后再运行训练脚本
+
+## 错误 5：训练速度极慢（CPU 上每轮超过 10 分钟）
+- **现象**：`torch.cuda.is_available()` 返回 `False`  
+- **原因分析**：未安装 GPU 版 PyTorch 或没有 CUDA 驱动  
+- **修改点**：安装 GPU 版本 PyTorch（参考官网），或接受 CPU 训练；可减小批量大小提高速度
